@@ -5,6 +5,9 @@ public class Personne {
 	private int id_pers;
 	private String nom;
 	private String prenom;
+	private String mail;
+	private String mdp;
+	private Acces acces;
 
 	public int getId_pers() {
 		return id_pers;
@@ -28,6 +31,30 @@ public class Personne {
 
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public String getMdp() {
+		return mdp;
+	}
+
+	public void setMdp(String mdp) {
+		this.mdp = mdp;
+	}
+
+	public Acces getAcces() {
+		return acces;
+	}
+
+	public void setAcces(Acces acces) {
+		this.acces = acces;
 	}
 
 }

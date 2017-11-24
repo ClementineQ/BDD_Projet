@@ -61,7 +61,7 @@ public class PersonneDAO extends DAO<Personne> {
 	public Personne find(int id) {
 		Personne personne = new Personne();
 		try {
-			PreparedStatement state = connect.prepareStatement("SELECT + FROM PERSONNE WHERE id_pers=?");
+			PreparedStatement state = connect.prepareStatement("SELECT * FROM PERSONNE WHERE id_pers=?");
 			state.setInt(1, id);
 			ResultSet result = state.executeQuery();
 

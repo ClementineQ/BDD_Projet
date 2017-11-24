@@ -3,8 +3,8 @@ package dao;
 public class Chambre {
 
 	private int id_chambre;
-	private String etat;
-	private String type;
+	private Etat etat;
+	private Type type;
 	private int capacite;
 	private int tarif;
 	private int id_pers;
@@ -34,19 +34,19 @@ public class Chambre {
 		this.id_chambre = id_chambre;
 	}
 
-	public String getEtat() {
+	public Etat getEtat() {
 		return etat;
 	}
 
-	public void setEtat(String etat) {
+	public void setEtat(Etat etat) {
 		this.etat = etat;
 	}
 
-	public String getType() {
+	public Type getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(Type type) {
 		this.type = type;
 	}
 

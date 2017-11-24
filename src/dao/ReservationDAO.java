@@ -69,7 +69,7 @@ public class ReservationDAO extends DAO<Reservation> {
 	public Reservation find(int id) {
 		Reservation reservation = new Reservation();
 		try {
-			PreparedStatement state = connect.prepareStatement("SELECT + FROM RESERVATION WHERE id_reservation=?");
+			PreparedStatement state = connect.prepareStatement("SELECT * FROM RESERVATION WHERE id_reservation=?");
 			state.setInt(1, id);
 			ResultSet result = state.executeQuery();
 
