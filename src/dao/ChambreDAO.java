@@ -14,7 +14,7 @@ public class ChambreDAO extends DAO<Chambre> {
 			state.setString(1, c.getEtat());
 			state.setString(2, c.getType());
 			state.setInt(3, c.getCapacite());
-			state.setInt(4, c.getTarif());
+			state.setDouble(4, c.getTarif());
 			state.setInt(5, c.getId_pers());
 			state.setInt(6, c.getId_reservation());
 			state.executeUpdate();
@@ -48,11 +48,11 @@ public class ChambreDAO extends DAO<Chambre> {
 		try {
 
 			PreparedStatement state = connect.prepareStatement(
-					"UPDATE CHAMBRE set etat=? AND type = ? AND capacite=? AND tarif=? AND id_pers=? AND id_reservation WHERE id_chambre= ?");
+					"UPDATE CHAMBRE SET etat=? AND type = ? AND capacite=? AND tarif=? AND id_pers=? AND id_reservation WHERE id_chambre= ?");
 			state.setString(1, c.getEtat());
 			state.setString(2, c.getType());
 			state.setInt(3, c.getCapacite());
-			state.setInt(4, c.getTarif());
+			state.setDouble(4, c.getTarif());
 			state.setInt(5, c.getId_pers());
 			state.setInt(6, c.getId_reservation());
 			state.setInt(7, c.getId_chambre());

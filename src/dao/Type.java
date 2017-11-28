@@ -45,5 +45,18 @@ public enum Type {
 			return false;
 		}
 	}
+	
+	public double prixType(){
+		switch(this){
+		case Appartement:
+			return 75;
+		case Classique:
+			return 50;
+		case Luxe:
+			return 100;
+		default:
+			return 0;
+		}
+	}
 
 }

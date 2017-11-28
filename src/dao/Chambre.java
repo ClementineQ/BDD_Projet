@@ -6,7 +6,7 @@ public class Chambre {
 	private Etat etat;
 	private Type type;
 	private int capacite;
-	private int tarif;
+	private double tarif;
 	private int id_pers;
 	private int id_reservation;
 
@@ -57,13 +57,23 @@ public class Chambre {
 	public void setCapacite(int capacite) {
 		this.capacite = capacite;
 	}
-
-	public int getTarif() {
+	
+	public double getTarif() {
 		return tarif;
 	}
 
-	public void setTarif(int tarif) {
+	public void setTarif(double tarif) {
 		this.tarif = tarif;
+	}
+	
+	public double prix(Reservation r){
+		double tarif;
+		tarif = (type.prixType() +r.getNb_adultes()*15 + r.getNb_enfants()*10 + r.getPt_dej()*6)*r.getNb_nuits();
+		if(r.getSaison().equals("Verte"))
+			tarif *= 0.8;
+		if(r.getSaison().equals("Rouge"))
+			tarif *= 1.2;
+		return tarif;
 	}
 
 }
