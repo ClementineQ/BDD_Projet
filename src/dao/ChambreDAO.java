@@ -11,8 +11,8 @@ public class ChambreDAO extends DAO<Chambre> {
 
 			PreparedStatement state = connect.prepareStatement(
 					"INSERT INTO CHAMBRE(etat, type, capacite, tarif, id_pers, id_reservation) VALUES (?, ?, ?, ?, ?,?)");
-			state.setObject(1, c.getEtat());
-			state.setObject(2, c.getType());
+			state.setString(1, c.getEtat());
+			state.setString(2, c.getType());
 			state.setInt(3, c.getCapacite());
 			state.setInt(4, c.getTarif());
 			state.setInt(5, c.getId_pers());
@@ -77,7 +77,7 @@ public class ChambreDAO extends DAO<Chambre> {
 
 			if (result.first()) {
 				chambre.setId_chambre(result.getInt("id_chambre"));
-				chambre.setObject(result.getString("etat"));
+				chambre.setEtat(result.getString("etat"));
 				chambre.setType(result.getString("type"));
 				chambre.setCapacite(result.getInt("capacite"));
 				chambre.setTarif(result.getInt("tarif"));

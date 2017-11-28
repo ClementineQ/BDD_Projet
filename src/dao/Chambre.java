@@ -34,20 +34,20 @@ public class Chambre {
 		this.id_chambre = id_chambre;
 	}
 
-	public Etat getEtat() {
-		return etat;
+	public String getEtat() {
+		return etat.getEtat();
 	}
 
-	public void setEtat(Etat etat) {
-		this.etat = etat;
+	public void setEtat(String s) {
+		this.etat = etat.setEtat(s);
 	}
 
-	public Type getType() {
-		return type;
+	public String getType() {
+		return type.getType();
 	}
 
-	public void setType(Type type) {
-		this.type = type;
+	public void setType(String s) {
+		this.type = type.setType(s);
 	}
 
 	public int getCapacite() {
