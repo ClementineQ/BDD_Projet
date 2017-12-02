@@ -141,6 +141,9 @@ public class Gestion {
 	
 
 	public static void main(String[] args) {
+		Scanner clavier = new Scanner(System.in);
+
+	}
 		
 		// Etape 1 : une personne rentre son mail + mdp
 		// Vérifier s'il est dans la base de données > Méthode Existe
@@ -148,10 +151,69 @@ public class Gestion {
 		// Méthodes ajouter, supprimer, modifier, consulter
 		// Marie : Personne
 		// Clémentine : Réservation
-		// Emeline : Chambre
+		// Emeline : Chambre	
+	
+		Properties prop = new Properties();
+		InputStream input = null;
+	try {
+		int mail, mdp, choix;
+		ResultSet result2;
+		choix=1;
+
+		input = new FileInputStream("properties");
+		prop.load(input);
+		Class.forName(prop.getProperty("driver"));
+		Connection conn = DriverManager.getConnection(prop.getProperty("url"), prop.getProperty("id"),
+				prop.getProperty("passwd"));
+
+		Statement state = conn.createStatement();
+		ResultSet result = state.executeQuery("SELECT * FROM PERSONNE");
+		ResultSetMetaData resultMeta = result.getMetaData();
+
+		do {
+			System.out.print("Entrez votre mail :");
+			mail = clavier.nextInt();
+			System.out.print("Entrez votre mdp :");
+			mdp = clavier.nextInt();
+			result2 = state.executeQuery(
+					"SELECT * FROM PERSONNE WHERE PERSONNE.mail=" + mail + " AND PERSONNE.mdp=" + mdp);
+
+		} while (!Existe(mail, mdp, result2));
+	
+	
 		
-		Scanner clavier = new Scanner(System.in);
-		clavier.close();
+		int choixO=1, choixA=1;	
+		while(choixO<4 || choixO>0){
+		System.out.println("Sur quel object voulez-vous travailler? "
+				+ "Tapez 1 pour personne"
+				+ "Tapez 2 pour chambre"
+				+ "Tapez 3 pour réservation"
+				+ "Tapez 0 pour sortir");
+		choixO = clavier.nextInt();
+	
+		while(choixA<5 && choixA>0){		
+			System.out.println("Que souhaitez-vous faire? "
+					+ "Tapez 1 pour consulter"
+					+ "Tapez 2 pour ajouter "
+					+ "Tapez 3 pour modifier"
+					+ "Tapez 4 pour supprimer"
+					+ "Tapez 0 pour sortir");
+			choixA = clavier.nextInt();
+		}
+		
+		  switch(choixO){
+		case 1 : 
+			switchPersonne(choixA);
+			break;
+		case 2 :
+			switchReservation(choixA);
+			break;
+		case 3 : 
+			switchChambre(choixA);
+		}
+	
+		
+	
 	}
 
 }
