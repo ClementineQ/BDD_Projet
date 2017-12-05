@@ -53,8 +53,8 @@ public class Personne {
 		return acces;
 	}
 
-	public void setAcces(Acces acces) {
-		this.acces = acces;
+	public void setAcces(String s) {
+		this.acces = acces.setAcces(s);
 	}
 
 }
