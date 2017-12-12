@@ -57,4 +57,10 @@ public class Personne {
 		this.acces = acces.setAcces(s);
 	}
 
+	@Override
+	public String toString() {
+		return "Personne [id_pers=" + id_pers + ", nom=" + nom + ", prenom=" + prenom + ", mail=" + mail + ", mdp="
+				+ mdp + ", acces=" + acces + "]";
+	}
+
 }

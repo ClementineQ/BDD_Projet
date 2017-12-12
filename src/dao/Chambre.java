@@ -57,7 +57,7 @@ public class Chambre {
 	public void setCapacite(int capacite) {
 		this.capacite = capacite;
 	}
-	
+
 	public double getTarif() {
 		return tarif;
 	}
@@ -65,15 +65,22 @@ public class Chambre {
 	public void setTarif(double tarif) {
 		this.tarif = tarif;
 	}
-	
-	public double prix(Reservation r){
+
+	public double prix(Reservation r) {
 		double tarif;
-		tarif = (type.prixType() +r.getNb_adultes()*15 + r.getNb_enfants()*10 + r.getPt_dej()*6)*r.getNb_nuits();
-		if(r.getSaison().equals("Verte"))
+		tarif = (type.prixType() + r.getNb_adultes() * 15 + r.getNb_enfants() * 10 + r.getPt_dej() * 6)
+				* r.getNb_nuits();
+		if (r.getSaison().equals("Verte"))
 			tarif *= 0.8;
-		if(r.getSaison().equals("Rouge"))
+		if (r.getSaison().equals("Rouge"))
 			tarif *= 1.2;
 		return tarif;
+	}
+
+	@Override
+	public String toString() {
+		return "Chambre [id_chambre=" + id_chambre + ", etat=" + etat + ", type=" + type + ", capacite=" + capacite
+				+ ", tarif=" + tarif + ", id_pers=" + id_pers + ", id_reservation=" + id_reservation + "]";
 	}
 
 }

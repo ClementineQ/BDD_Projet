@@ -65,15 +65,42 @@ public class PersonneDAO extends DAO<Personne> {
 			state.setInt(1, id);
 			ResultSet result = state.executeQuery();
 
-			if (result.first()) {
+			if (result.next()) {
 				personne.setId_pers(result.getInt("id_pers"));
 				personne.setNom(result.getString("nom"));
 				personne.setPrenom(result.getString("prenom"));
+				personne.setMail(result.getString("mail"));
+				personne.setMdp(result.getString("mdp"));
+				personne.setAcces(result.getString("acces"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		System.out.println(personne.toString());
 		return personne;
+	}
+
+	public Personne Existe(String mail, String mdp) {
+		try {
+			PreparedStatement state = connect
+					.prepareStatement("SELECT * FROM PERSONNE WHERE PERSONNE.mail= ? AND PERSONNE.mdp= ?");
+			state.setString(1, mail);
+			state.setString(2, mdp);
+			ResultSet result = state.executeQuery();
+			if (result.next()){
+				Personne personne = new Personne();
+				personne.setId_pers(result.getInt("id_pers"));
+				personne.setNom(result.getString("nom"));
+				personne.setPrenom(result.getString("prenom"));
+				personne.setMail(mail);
+				personne.setMdp(mdp);
+				//personne.setAcces(result.getString("acces"));
+				return personne;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

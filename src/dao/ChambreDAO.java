@@ -75,6 +75,29 @@ public class ChambreDAO extends DAO<Chambre> {
 			state.setInt(1, id);
 			ResultSet result = state.executeQuery();
 
+			if (result.next()) {
+				chambre.setId_chambre(result.getInt("id_chambre"));
+				chambre.setEtat(result.getString("etat"));
+				chambre.setType(result.getString("type"));
+				chambre.setCapacite(result.getInt("capacite"));
+				chambre.setTarif(result.getInt("tarif"));
+				chambre.setId_pers(result.getInt("id_pers"));
+				chambre.setId_reservation(result.getInt("id_reservation"));
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return chambre;
+	}
+
+	public Chambre findResa(int id) {
+		Chambre chambre = new Chambre();
+		try {
+			PreparedStatement state = connect.prepareStatement("SELECT * FROM CHAMBRE WHERE id_reservation=?");
+			state.setInt(1, id);
+			ResultSet result = state.executeQuery();
+
 			if (result.first()) {
 				chambre.setId_chambre(result.getInt("id_chambre"));
 				chambre.setEtat(result.getString("etat"));

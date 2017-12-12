@@ -1,24 +1,24 @@
 package dao;
 
 public enum Acces {
-	
+
 	Client, Gestionnaire, Employee;
-	
-	public String getAcces(){
+
+	public String getAcces() {
 		return this.toString();
 	}
-	
-	public Acces setAcces(String s){
-		if(s.equals(Client))
+
+	public Acces setAcces(String s) {
+		if (s.equals(Client))
 			return Client;
-		else if(s.equals(Gestionnaire))
+		else if (s.equals(Gestionnaire))
 			return Gestionnaire;
-		else if(s.equals(Employee))
+		else if (s.equals(Employee))
 			return Employee;
 		else
 			return null;
 	}
-	
+
 	public boolean isClient() {
 		switch (this) {
 		case Client:
@@ -27,8 +27,8 @@ public enum Acces {
 			return false;
 		}
 	}
-	
-	public boolean isGestion() {
+
+	public boolean isGestionnaire() {
 		switch (this) {
 		case Gestionnaire:
 			return true;
@@ -36,7 +36,7 @@ public enum Acces {
 			return false;
 		}
 	}
-	
+
 	public boolean isEmployee() {
 		switch (this) {
 		case Employee:
