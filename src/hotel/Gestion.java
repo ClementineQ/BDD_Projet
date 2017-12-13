@@ -1,11 +1,34 @@
 package hotel;
 
+<<<<<<< HEAD
 import java.sql.Date;
+=======
+<<<<<<< HEAD
+import java.sql.Date;
+=======
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.Statement;
+import java.util.Properties;
+>>>>>>> 2d23d9992e591fa562be24866e179cbbeef7f7c1
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 import java.util.Scanner;
 
 import dao.Acces;
 import dao.Chambre;
 import dao.ChambreDAO;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+import dao.Etat;
+>>>>>>> 2d23d9992e591fa562be24866e179cbbeef7f7c1
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 import dao.Personne;
 import dao.PersonneDAO;
 import dao.Reservation;
@@ -16,16 +39,38 @@ public class Gestion {
 	private static boolean switchPersonne(int x, Acces acces, int id) {
 		Scanner clavier = new Scanner(System.in);
 		PersonneDAO pdao = new PersonneDAO();
+<<<<<<< HEAD
 		Personne p = pdao.find(id);
 		String nom, prenom, mail, mdp, acc;
+=======
+		Personne p = new Personne();
+		String nom, prenom, mail, mdp;
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 
 		switch (x) {
 
 		case 1: // Consulter
+<<<<<<< HEAD
 			p.toString();
 			return true;
 		case 2: // Ajouter
 			if (acces.isGestionnaire()) {
+=======
+			if (acces.isGestionnaire() || (acces.isClient() && id == p.getId_pers())) {
+				System.out.println(pdao.find(p.getId_pers()).toString());
+				return true;
+			} else {
+				System.out.println("Vous n'avez pas les droits pour consulter un profil.");
+				return true;
+			}
+
+		case 2: // Ajouter
+			if (acces.isClient() || acces.isGestionnaire()) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2d23d9992e591fa562be24866e179cbbeef7f7c1
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 				System.out.println("Donnez le nom");
 				nom = clavier.nextLine();
 				System.out.println("Donnez le prénom");
@@ -35,13 +80,21 @@ public class Gestion {
 				System.out.println("Donnez le mdp");
 				mdp = clavier.nextLine();
 				System.out.println("Donnez l'accès");
+<<<<<<< HEAD
 				acc = clavier.next();
+=======
+				String acces2 = clavier.next();
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 
 				p.setNom(nom);
 				p.setPrenom(prenom);
 				p.setMail(mail);
 				p.setMdp(mdp);
+<<<<<<< HEAD
 				p.setAcces(acc);
+=======
+				p.setAcces(acces2);
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 				if (pdao.Existe(mail, mdp) != null) {
 					pdao.create(p);
 					return pdao.create(p);
@@ -52,6 +105,7 @@ public class Gestion {
 
 		case 3: // Modifier
 			if ((acces.isClient() && id == p.getId_pers()) || acces.isGestionnaire()) {
+<<<<<<< HEAD
 				if(acces.isGestionnaire()){
 				System.out.print("Donner le numéro de la personne à modifier : ");
 				int num = clavier.nextInt(); 
@@ -61,22 +115,62 @@ public class Gestion {
 				if(acces.isGestionnaire()){
 					System.out.print("5. Acces ");
 				}
+=======
+<<<<<<< HEAD
+				/*
+				 * System.out.print(
+				 * "Donner le numéro de la personne à modifier : "); int num =
+				 * clavier.nextInt(); p = pdao.find(num);
+				 */
+				System.out.println("Que voulez-vous modifer ?" + "1. Nom" + "2. Prenom" + "3. E-mail" + "4. Mdp"
+						+ "5. Acces" + "0.Sortie");
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 				int update = clavier.nextInt();
 				while (update <= 5 && update > 0) {
 					switch (update) {
 					case 1:
 						System.out.println("Quel est le nouveau nom ? ");
 						nom = clavier.next();
+<<<<<<< HEAD
+=======
+=======
+
+				System.out.println("Que voulez-vous modifer ?" + "1. Nom" + "2. Prenom" + "3. E-mail" + "4. Mdp"
+						+ "5. Acces" + "0.Sortie");
+				int update = clavier.nextInt();
+				while (update > 5 && update < 0) {
+					switch (update) {
+					case 1:
+						System.out.println("Quel est le nouveau nom ? ");
+						nom = clavier.nextLine();
+>>>>>>> 2d23d9992e591fa562be24866e179cbbeef7f7c1
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 						p.setNom(nom);
 						break;
 					case 2:
 						System.out.println("Quel est le nouveau prénom ? ");
+<<<<<<< HEAD
 						prenom = clavier.next();
+=======
+<<<<<<< HEAD
+						prenom = clavier.next();
+=======
+						prenom = clavier.nextLine();
+>>>>>>> 2d23d9992e591fa562be24866e179cbbeef7f7c1
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 						p.setPrenom(prenom);
 						break;
 					case 3:
 						System.out.println("Quel est le nouvel email ? ");
+<<<<<<< HEAD
 						mail = clavier.next();
+=======
+<<<<<<< HEAD
+						mail = clavier.next();
+=======
+						mail = clavier.nextLine();
+>>>>>>> 2d23d9992e591fa562be24866e179cbbeef7f7c1
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 						p.setMail(mail);
 						break;
 					case 4:
@@ -85,6 +179,7 @@ public class Gestion {
 						p.setMdp(mdp);
 						break;
 					case 5:
+<<<<<<< HEAD
 						if(acces.isGestionnaire()){
 						System.out.println("Quel est le nouvel acces ? ");
 						String acces3 = clavier.next();
@@ -92,6 +187,17 @@ public class Gestion {
 						} else {
 							System.out.println("Vous ne pouvez pas modifier votre accès.");
 						}
+=======
+						System.out.println("Quel est le nouvel acces ? ");
+<<<<<<< HEAD
+						String acces3 = clavier.next();
+=======
+						String acces3 = clavier.nextLine();
+>>>>>>> 2d23d9992e591fa562be24866e179cbbeef7f7c1
+						p.setAcces(acces3);
+						break;
+					case 0:
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 						break;
 					default:
 						break;
@@ -100,6 +206,7 @@ public class Gestion {
 				}
 			} else {
 				System.out.println("Vous ne pouvez pas modifier ce profil.");
+<<<<<<< HEAD
 				return false;
 			}
 		case 4: // Supprimer
@@ -111,6 +218,22 @@ public class Gestion {
 			}
 			else {
 				System.out.println("Vous n'avez pas les droits pour supprimer un profil.");
+=======
+				return true;
+			}
+		case 4: // Supprimer
+<<<<<<< HEAD
+			/*
+			 * System.out.print("Donner le numéro de la personne à supprimer : "
+			 * ); int num = clavier.nextInt();
+			 */
+=======
+>>>>>>> 2d23d9992e591fa562be24866e179cbbeef7f7c1
+			if (acces.isGestionnaire())
+				return pdao.delete(p);
+			else {
+				System.out.println("Vous n'avez pas les droits pour supprimer ce profil.");
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 				return true;
 			}
 		default:
@@ -125,10 +248,15 @@ public class Gestion {
 
 		ChambreDAO ch = new ChambreDAO();
 		Chambre c = ch.findResa(n_reserv);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 
 		PersonneDAO pers = new PersonneDAO();
 		Personne p = pers.find(c.getId_pers());
 
+<<<<<<< HEAD
 		System.out.println("La réservation n°" + n_reserv + "est au nom de" + p.getPrenom() + " " + p.getPrenom()
 				+ " et a comme modalités:");
 		System.out.println("Nombre d'adultes: " + resa.getNb_adultes());
@@ -186,6 +314,71 @@ public class Gestion {
 				rs.setNb_enfants(clavier.nextInt());
 				return true;
 
+=======
+=======
+
+		PersonneDAO pers = new PersonneDAO();
+		Personne p = pers.find(c.getId_pers());
+
+>>>>>>> 2d23d9992e591fa562be24866e179cbbeef7f7c1
+		System.out.println("La réservation n°" + n_reserv + "est au nom de" + p.getPrenom() + " " + p.getPrenom()
+				+ " et a comme modalités:");
+		System.out.println("Nombre d'adultes: " + resa.getNb_adultes());
+		System.out.println("Nombre d'enfants: " + resa.getNb_enfants());
+		System.out.println("Réservation à partir du : " + resa.getDate_deb());
+		System.out.println("Réservation pour : " + resa.getNb_nuits() + " nuit(s)");
+		System.out.println("Réservation pour : " + resa.getPt_dej() + " petit(s) déjeuner(s)");
+		System.out.println("Période : " + resa.getSaison());
+		clavier.close();
+		return true;
+	}
+
+	private static boolean AjouterResa() {
+		Scanner clavier = new Scanner(System.in);
+		Reservation newr = new Reservation();
+		System.out.println("Quel est le n° de la réservation?");
+		newr.setId_reservation(clavier.nextInt());
+		System.out.println("Combien d'adultes seront présents?");
+		newr.setNb_adultes(clavier.nextInt());
+		System.out.println("Combien d'enfants seront présents?");
+		newr.setNb_enfants(clavier.nextInt());
+		System.out.println("Quelle est la date de début de séjour?");
+		String tempo = clavier.nextLine();
+		newr.setDate_deb(Date.valueOf(tempo));
+		System.out.println("Combien de nuits?");
+		newr.setNb_nuits(clavier.nextInt());
+		System.out.println("Combien de petits déjeuners par nuit?");
+		newr.setPt_dej(clavier.nextInt());
+		System.out.println("En quelle période (verte, orange, rouge)?");
+		newr.setSaison(clavier.nextLine());
+
+		ReservationDAO resaDAO = new ReservationDAO();
+		clavier.close();
+		return resaDAO.create(newr);
+	}
+
+	private static boolean ModifierResa(int nbresa) {
+		Scanner clavier = new Scanner(System.in);
+		ReservationDAO rsDAO = new ReservationDAO();
+		Reservation rs = rsDAO.find(nbresa);
+		int temp = 1;
+		while (temp != 0) {
+			System.out.println(
+					"Que voulez vous modifier? 1: nombre d'adultes, 2: nombre d'enfants, 3: date de début de séjour"
+							+ ", 4: nombre de nuits, 5: nombre de petits déjeuners, 6: la saison, 0: pour sortir");
+			temp = clavier.nextInt();
+			switch (temp) {
+			case 1:
+				System.out.println("Nouveau nombre d'adultes:");
+				rs.setNb_adultes(clavier.nextInt());
+				return true;
+
+			case 2:
+				System.out.println("Nouveau nombre d'enfants:");
+				rs.setNb_enfants(clavier.nextInt());
+				return true;
+
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 			case 3:
 				System.out.println("Nouvelle date de début:");
 				String tempo2 = clavier.nextLine();
@@ -211,6 +404,13 @@ public class Gestion {
 				return false;
 			}
 		}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+		clavier.close();
+>>>>>>> 2d23d9992e591fa562be24866e179cbbeef7f7c1
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 		return false;
 	}
 
@@ -233,6 +433,10 @@ public class Gestion {
 			ChambreDAO ch = new ChambreDAO();
 			Chambre c = ch.findResa(k);
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 			if (acces.isClient() && id != c.getId_pers()) {
 				System.out.println("Vous n'avez pas les droits pour consulter cette réservation.");
 				return false;
@@ -249,6 +453,23 @@ public class Gestion {
 				AjouterResa();
 				return true;
 			}
+<<<<<<< HEAD
+=======
+=======
+			if (acces.isClient() && id != c.getId_pers())
+				System.out.println("Vous n'avez pas les droits pour consulter cette réservation.");
+			else
+				ConsulterResa(k);
+
+			// ajouter une nouvealle réservation
+		case 2:
+			if (acces.isEmployee())
+				System.out.println("Vous n'avez pas les droits pour créer une réservation.");
+			else
+				AjouterResa();
+
+>>>>>>> 2d23d9992e591fa562be24866e179cbbeef7f7c1
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 			// modifier une réservation existante
 		case 3:
 			System.out.println("Quel est le numéro de la réservation à modifier?");
@@ -256,6 +477,10 @@ public class Gestion {
 			ChambreDAO ch1 = new ChambreDAO();
 			Chambre c1 = ch1.findResa(b);
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 			if ((acces.isClient() && id != c1.getId_pers()) || acces.isEmployee()) {
 				System.out.println("Vous n'avez pas les droits pour modifier cette réservation.");
 				return false;
@@ -263,6 +488,16 @@ public class Gestion {
 				ModifierResa(b);
 				return true;
 			}
+<<<<<<< HEAD
+=======
+=======
+			if ((acces.isClient() && id != c1.getId_pers()) || acces.isEmployee())
+				System.out.println("Vous n'avez pas les droits pour modifier cette réservation.");
+			else
+				ModifierResa(b);
+
+>>>>>>> 2d23d9992e591fa562be24866e179cbbeef7f7c1
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 			// supprimer une réservation existante
 		case 4:
 			if (acces.isClient()) {
@@ -274,13 +509,31 @@ public class Gestion {
 				if ((acces.isClient() && id == c2.getId_pers()) || acces.isGestionnaire()) {
 					SupprimerResa(k1);
 				}
+<<<<<<< HEAD
 				return true;
+=======
+<<<<<<< HEAD
+				return true;
+=======
+>>>>>>> 2d23d9992e591fa562be24866e179cbbeef7f7c1
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 			}
 
 			else {
 				System.out.println("Vous n'avez pas les droits pour créer une réservation.");
+<<<<<<< HEAD
 				return false;
 			}
+=======
+<<<<<<< HEAD
+				return false;
+			}
+=======
+
+			}
+			clavier.close();
+>>>>>>> 2d23d9992e591fa562be24866e179cbbeef7f7c1
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 		default:
 			return false;
 		}
@@ -293,17 +546,40 @@ public class Gestion {
 		String type, etat;
 		int cap, num;
 		switch (choix) {
+<<<<<<< HEAD
 		case 1: // Consulter
+=======
+<<<<<<< HEAD
+		case 1: // Consulter
+=======
+		case 1: // consulter
+>>>>>>> 2d23d9992e591fa562be24866e179cbbeef7f7c1
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 			System.out.print("Donner le numéro de la chambre à afficher : ");
 			num = clavier.nextInt();
 			if (acces.isClient()) {
 				System.out.println("Vous n'avez pas les droits pour consulter les chambres.");
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 				return false;
 			} else {
 				System.out.println(cDAO.find(num).toString());
 				return true;
 			}
 		case 2: // Ajouter
+<<<<<<< HEAD
+=======
+=======
+			} else {
+				System.out.println(cDAO.find(num).toString());
+			}
+			return true;
+
+		case 2:// Ajouter
+>>>>>>> 2d23d9992e591fa562be24866e179cbbeef7f7c1
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 			if (acces.isGestionnaire()) {
 				System.out.print("Donner le type de la nouvelle chambre : ");
 				type = clavier.next();
@@ -312,6 +588,10 @@ public class Gestion {
 				c.setType(type);
 				c.setCapacite(cap);
 				c.setEtat("Disponible");
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 				System.out.println(c.toString());
 				return cDAO.create(c);
 			} else {
@@ -319,6 +599,17 @@ public class Gestion {
 				return false;
 			}
 		case 3: // Modifier
+<<<<<<< HEAD
+=======
+=======
+				return cDAO.create(c);
+			} else {
+				System.out.println("Vous n'avez pas les droits pour ajouter une chambre");
+				return true;
+			}
+		case 3:// modifier
+>>>>>>> 2d23d9992e591fa562be24866e179cbbeef7f7c1
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 			if (acces.isGestionnaire()) {
 				System.out.println("Quelle chambre voulez-vous modifier ?");
 				num = clavier.nextInt();
@@ -330,6 +621,10 @@ public class Gestion {
 			} else {
 				System.out.println("Vous n'avez pas les droits pour modifier l'etat d'une chambre.");
 				return true;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 			}
 		case 4: // Supprimer
 			if (acces.isGestionnaire()) {
@@ -341,10 +636,29 @@ public class Gestion {
 			} else {
 				System.out.println("Vous n'avez pas les droits pour supprimer une chambre.");
 				return false;
+<<<<<<< HEAD
 			}
+=======
+			}
+=======
+			}
+		case 4:// Supprimer
+			if (acces.isGestionnaire()) {
+				System.out.print("Donner le numéro de la chambre à supprimer : ");
+				num = clavier.nextInt();
+				c.setId_chambre(num);
+				System.out.println("ok");
+				return cDAO.delete(c);
+			} else {
+				System.out.println("Vous n'avez pas les droits pour supprimer une chambre.");
+				return true;
+			}
+>>>>>>> 2d23d9992e591fa562be24866e179cbbeef7f7c1
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 		default:
 			return false;
 		}
+
 	}
 
 	public static void main(String[] args) {
@@ -358,7 +672,15 @@ public class Gestion {
 			System.out.print("Entrez votre mdp :");
 			mdp = clavier.next();
 		} while (p.Existe(mail, mdp).getId_pers() == 0);
+<<<<<<< HEAD
 		Personne pers = p.Existe(mail, mdp);
+=======
+<<<<<<< HEAD
+		Personne pers = p.Existe(mail, mdp);
+=======
+		// Personne pers = p.Existe(mail, mdp);
+>>>>>>> 2d23d9992e591fa562be24866e179cbbeef7f7c1
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 
 		int choixO = 1, choixA;
 		while (choixO < 4 || choixO > 0) {
@@ -374,6 +696,10 @@ public class Gestion {
 
 			switch (choixO) {
 			case 1:
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 				switchPersonne(choixA, pers.getAcces(), pers.getId_pers());
 				break;
 			case 2:
@@ -381,6 +707,19 @@ public class Gestion {
 				break;
 			case 3:
 				switchReservation(choixA, pers.getAcces(), pers.getId_pers());
+<<<<<<< HEAD
+=======
+=======
+				switchPersonne(choixA);
+				break;
+			case 2:
+				switchChambre(choixA);
+				break;
+			case 3:
+				// switchReservation(choixA, pers.getAcces(),
+				// pers.getId_pers());
+>>>>>>> 2d23d9992e591fa562be24866e179cbbeef7f7c1
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 				break;
 			}
 

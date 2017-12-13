@@ -78,7 +78,11 @@ public class PersonneDAO extends DAO<Personne> {
 				personne.setPrenom(result.getString("prenom"));
 				personne.setMail(result.getString("mail"));
 				personne.setMdp(result.getString("mdp"));
+<<<<<<< HEAD
 				personne.setAcces1(result.getString("acces"));
+=======
+				personne.setAcces(result.getString("acces"));
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -90,18 +94,40 @@ public class PersonneDAO extends DAO<Personne> {
 	public Personne Existe(String mail, String mdp) {
 		try {
 			PreparedStatement state = connect
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 					.prepareStatement("SELECT * FROM PERSONNE WHERE PERSONNE.mail = ? AND PERSONNE.mdp = ?");
 			state.setString(1, mail);
 			state.setString(2, mdp);
 			ResultSet result = state.executeQuery();
 			if (result.next()) {
+<<<<<<< HEAD
+=======
+=======
+					.prepareStatement("SELECT * FROM PERSONNE WHERE PERSONNE.mail= ? AND PERSONNE.mdp= ?");
+			state.setString(1, mail);
+			state.setString(2, mdp);
+			ResultSet result = state.executeQuery();
+			if (result.next()){
+>>>>>>> 2d23d9992e591fa562be24866e179cbbeef7f7c1
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 				Personne personne = new Personne();
 				personne.setId_pers(result.getInt("id_pers"));
 				personne.setNom(result.getString("nom"));
 				personne.setPrenom(result.getString("prenom"));
 				personne.setMail(mail);
 				personne.setMdp(mdp);
+<<<<<<< HEAD
 				personne.setAcces1(result.getString("acces"));
+=======
+<<<<<<< HEAD
+				personne.setAcces(result.getString("acces"));
+=======
+				//personne.setAcces(result.getString("acces"));
+>>>>>>> 2d23d9992e591fa562be24866e179cbbeef7f7c1
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 				return personne;
 			}
 		} catch (Exception e) {

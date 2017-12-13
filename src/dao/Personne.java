@@ -57,12 +57,17 @@ public class Personne {
 	}
 
 	public void setAcces(String s) {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 		if (s.equals("Gestionnaire"))
 			this.acces = Acces.Gestionnaire;
 		else if (s.equals("Employee"))
 			this.acces = Acces.Employee;
 		else
 			this.acces = Acces.Client;
+<<<<<<< HEAD
 	}
 	
 	public void setAcces1(String s) {
@@ -72,6 +77,11 @@ public class Personne {
 			this.acces = Acces.Employee;
 		else
 			this.acces = Acces.Client;
+=======
+=======
+		this.acces = acces.setAcces(s);
+>>>>>>> 2d23d9992e591fa562be24866e179cbbeef7f7c1
+>>>>>>> 3eec79b8b7c133eb58dae23c28f60820e71f6afb
 	}
 
 	@Override
