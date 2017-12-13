@@ -73,7 +73,7 @@ public class ReservationDAO extends DAO<Reservation> {
 			state.setInt(1, id);
 			ResultSet result = state.executeQuery();
 
-			if (result.first()) {
+			if (result.next()) {
 				reservation.setId_reservation(result.getInt("id_reservation"));
 				reservation.setNb_adultes(result.getInt("nb_adultes"));
 				reservation.setNb_enfants(result.getInt("nb_enfants"));

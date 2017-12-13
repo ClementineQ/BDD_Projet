@@ -50,11 +50,34 @@ public class Personne {
 	}
 
 	public Acces getAcces() {
-		return acces;
+		if (acces == null)
+			return Acces.Client;
+		else
+			return acces;
 	}
 
-	public void setAcces(Acces acces) {
-		this.acces = acces;
+	public void setAcces(String s) {
+		if (s.equals("Gestionnaire"))
+			this.acces = Acces.Gestionnaire;
+		else if (s.equals("Employee"))
+			this.acces = Acces.Employee;
+		else
+			this.acces = Acces.Client;
+	}
+	
+	public void setAcces1(String s) {
+		if (s == "Gestionnaire")
+			this.acces = Acces.Gestionnaire;
+		else if (s == "Employee")
+			this.acces = Acces.Employee;
+		else
+			this.acces = Acces.Client;
+	}
+
+	@Override
+	public String toString() {
+		return "Personne [id_pers=" + id_pers + ", nom=" + nom + ", prenom=" + prenom + ", mail=" + mail + ", mdp="
+				+ mdp + ", acces=" + acces + "]";
 	}
 
 }

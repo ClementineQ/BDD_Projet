@@ -1,0 +1,4 @@
+url=jdbc:postgresql://rhodes.ima.uco.fr:5432/cqueinnec
+password=
+id=postgres
+driver=org.postgresql.Driver
