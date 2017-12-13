@@ -8,6 +8,20 @@ public enum Type {
 		return this.toString();
 	}
 
+<<<<<<< HEAD
+=======
+	public Type setType(String s) {
+		if (s.equals(Appartement))
+			return Appartement;
+		else if (s.equals(Luxe))
+			return Luxe;
+		else if (s.equals(Classique))
+			return Classique;
+		else
+			return null;
+	}
+
+>>>>>>> 2d23d9992e591fa562be24866e179cbbeef7f7c1
 	public boolean isAppart() {
 		switch (this) {
 		case Appartement:

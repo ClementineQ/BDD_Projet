@@ -90,18 +90,30 @@ public class PersonneDAO extends DAO<Personne> {
 	public Personne Existe(String mail, String mdp) {
 		try {
 			PreparedStatement state = connect
+<<<<<<< HEAD
 					.prepareStatement("SELECT * FROM PERSONNE WHERE PERSONNE.mail = ? AND PERSONNE.mdp = ?");
 			state.setString(1, mail);
 			state.setString(2, mdp);
 			ResultSet result = state.executeQuery();
 			if (result.next()) {
+=======
+					.prepareStatement("SELECT * FROM PERSONNE WHERE PERSONNE.mail= ? AND PERSONNE.mdp= ?");
+			state.setString(1, mail);
+			state.setString(2, mdp);
+			ResultSet result = state.executeQuery();
+			if (result.next()){
+>>>>>>> 2d23d9992e591fa562be24866e179cbbeef7f7c1
 				Personne personne = new Personne();
 				personne.setId_pers(result.getInt("id_pers"));
 				personne.setNom(result.getString("nom"));
 				personne.setPrenom(result.getString("prenom"));
 				personne.setMail(mail);
 				personne.setMdp(mdp);
+<<<<<<< HEAD
 				personne.setAcces(result.getString("acces"));
+=======
+				//personne.setAcces(result.getString("acces"));
+>>>>>>> 2d23d9992e591fa562be24866e179cbbeef7f7c1
 				return personne;
 			}
 		} catch (Exception e) {

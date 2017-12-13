@@ -57,12 +57,16 @@ public class Personne {
 	}
 
 	public void setAcces(String s) {
+<<<<<<< HEAD
 		if (s.equals("Gestionnaire"))
 			this.acces = Acces.Gestionnaire;
 		else if (s.equals("Employee"))
 			this.acces = Acces.Employee;
 		else
 			this.acces = Acces.Client;
+=======
+		this.acces = acces.setAcces(s);
+>>>>>>> 2d23d9992e591fa562be24866e179cbbeef7f7c1
 	}
 
 	@Override
