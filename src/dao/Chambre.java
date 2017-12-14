@@ -34,20 +34,36 @@ public class Chambre {
 		this.id_chambre = id_chambre;
 	}
 
-	public String getEtat() {
-		return etat.getEtat();
+	public Etat getEtat() {
+		if (etat == null)
+			return Etat.Disponible;
+		else
+			return etat;
 	}
 
 	public void setEtat(String s) {
-		this.etat = etat.setEtat(s);
+		if (s.equals("Reservee"))
+			this.etat = Etat.Reservee;
+		else if (s.equals("Sale"))
+			this.etat = Etat.Sale;
+		else
+			this.etat = Etat.Disponible;
 	}
 
-	public String getType() {
-		return type.getType();
+	public Type getType() {
+		if (type == null)
+			return Type.Classique;
+		else
+			return type;
 	}
 
 	public void setType(String s) {
-		this.type = type.setType(s);
+		if (s.equals("Appartement"))
+			this.type = Type.Appartement;
+		else if (s.equals("Luxe"))
+			this.type = Type.Luxe;
+		else
+			this.type = Type.Classique;
 	}
 
 	public int getCapacite() {
@@ -57,7 +73,7 @@ public class Chambre {
 	public void setCapacite(int capacite) {
 		this.capacite = capacite;
 	}
-	
+
 	public double getTarif() {
 		return tarif;
 	}
@@ -65,15 +81,22 @@ public class Chambre {
 	public void setTarif(double tarif) {
 		this.tarif = tarif;
 	}
-	
-	public double prix(Reservation r){
+
+	public double prix(Reservation r) {
 		double tarif;
-		tarif = (type.prixType() +r.getNb_adultes()*15 + r.getNb_enfants()*10 + r.getPt_dej()*6)*r.getNb_nuits();
-		if(r.getSaison().equals("Verte"))
+		tarif = (type.prixType() + r.getNb_adultes() * 15 + r.getNb_enfants() * 10 + r.getPt_dej() * 6)
+				* r.getNb_nuits();
+		if (r.getSaison().equals("Verte"))
 			tarif *= 0.8;
-		if(r.getSaison().equals("Rouge"))
+		if (r.getSaison().equals("Rouge"))
 			tarif *= 1.2;
 		return tarif;
+	}
+
+	@Override
+	public String toString() {
+		return "Chambre [id_chambre=" + id_chambre + ", etat=" + etat + ", type=" + type + ", capacite=" + capacite
+				+ ", tarif=" + tarif + ", id_pers=" + id_pers + ", id_reservation=" + id_reservation + "]";
 	}
 
 }

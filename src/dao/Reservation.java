@@ -10,7 +10,7 @@ public class Reservation {
 	private Date date_deb;
 	private int nb_nuits;
 	private int pt_dej;
-	private String saison;
+	private Saison saison;
 
 	public int getId_reservation() {
 		return id_reservation;
@@ -29,11 +29,16 @@ public class Reservation {
 	}
 
 	public String getSaison() {
-		return saison;
+		return saison.toString();
 	}
 
 	public void setSaison(String saison) {
-		this.saison = saison;
+		if (saison.equals("Rouge"))
+			this.saison = Saison.Rouge;
+		else if (saison.equals("Orange"))
+			this.saison = Saison.Orange;
+		else
+			this.saison = Saison.Vert;
 	}
 
 	public int getNb_adultes() {

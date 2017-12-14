@@ -48,7 +48,7 @@ public class ReservationDAO extends DAO<Reservation> {
 		try {
 
 			PreparedStatement state = connect.prepareStatement(
-					"UPDATE RESERVATION set nb_adultes=? AND nb_enfants = ? AND date_deb=? AND nb_nuits =? AND pt_dej=? AND saison=? WHERE id_reservation= ?");
+					"UPDATE RESERVATION set nb_adultes=?, nb_enfants = ?, date_deb=?, nb_nuits =?, pt_dej=?, saison=? WHERE id_reservation= ?");
 			state.setInt(1, r.getNb_adultes());
 			state.setInt(2, r.getNb_enfants());
 			state.setDate(3, r.getDate_deb());
@@ -73,7 +73,7 @@ public class ReservationDAO extends DAO<Reservation> {
 			state.setInt(1, id);
 			ResultSet result = state.executeQuery();
 
-			if (result.first()) {
+			if (result.next()) {
 				reservation.setId_reservation(result.getInt("id_reservation"));
 				reservation.setNb_adultes(result.getInt("nb_adultes"));
 				reservation.setNb_enfants(result.getInt("nb_enfants"));
