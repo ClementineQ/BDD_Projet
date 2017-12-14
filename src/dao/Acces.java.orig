@@ -4,6 +4,15 @@ public enum Acces {
 
 	Client, Gestionnaire, Employee;
 
+<<<<<<< HEAD
+	public Acces setAcces(String s) {
+		if (s.equals("Client"))
+			return Acces.Client;
+		else if (s.equals("Gestionnaire"))
+			return Acces.Gestionnaire;
+		else if (s.equals("Employee"))
+			return Acces.Employee;
+=======
 	public String getAcces() {
 		return this.toString();
 	}
@@ -15,6 +24,7 @@ public enum Acces {
 			return Gestionnaire;
 		else if (s.equals(Employee))
 			return Employee;
+>>>>>>> 9a25d545b1043c23ad9e42040183bf8d3093cb6f
 		else
 			return null;
 	}
